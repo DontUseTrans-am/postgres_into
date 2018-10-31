@@ -1,6 +1,7 @@
 import datetime
 import pandas as pd
 import psycopg2
+from read_csv import Connection
 
 #データベース接続とファイル読み込み
 conn= psycopg2.connect("host=127.0.0.1 port=5432 dbname=video_research user=yamashita_lab password=irohasu")
@@ -10,22 +11,7 @@ cur = conn.cursor()
 filelist=["t_weblog_0000_part_00.tsv","t_weblog_0001_part_00.tsv","t_weblog_0002_part_00.tsv","t_weblog_0003_part_00.tsv"]
 #table情報
 table_name="WEBサイト閲覧ログ"
-field=[
-    ["世帯No","varchar(10)"],
-    ["個人No","varchar(10)"],
-    ["日付" ,"date"],
-    ["時刻", "varchar(255)"],
-    ["PCフラグ","char(1)"],
-    ["SPフラグ","char(1)"],
-    ["TBフラグ","char(1)"],
-    ["URL","text"],
-    ["ドメイン","text"],
-    ["サブドメイン","text"],
-    ["レファラー","text"],
-    ["リファラーのドメイン","text"],
-    ["ページのタイトル","text"],
-    ["滞在時間","int"]
-]
+field=
 
 #create文を作成
 sql_createtable="create table "+table_name+"("
