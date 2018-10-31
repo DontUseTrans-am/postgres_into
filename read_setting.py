@@ -9,8 +9,12 @@ class Connection(object):
                 value=row.pop()
                 key=row.pop()
                 self.dictionary[key]=value
+    def create(self):
+        conn_sql=""
+        for keys,values in self.dictionary.items():
+            conn_sql+=keys+"="+values+" "
+        return conn_sql 
 if __name__=="__main__":
     c=Connection()
-    for x,y in c.dictionary.items():
-        print(x,y)
+    print(c.create())
 
